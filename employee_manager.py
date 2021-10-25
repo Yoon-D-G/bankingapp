@@ -1,27 +1,40 @@
-class Employee_manager:
-    def __init__(self, firstname, lastname, employee_id, salary):
+import employee
+import senior_manager
+import additional_functions
+
+class Employee_manager(additional_functions.AdditionalFunctions):
+    employees = []
+
+    def __init__(self, firstname, lastname, salary):
         self.firstname = firstname
         self.lastname = lastname
-        self.employee_id = employee_id
-        self.salary = salary
-        self.line_manager_group = []
+        self.salary = float(salary)
+        self.subordinates = []
+        senior_manager.SeniorManager.managers.append(self)
 
-    def pay_salary(self):
-        return self.salary
+    def add_employee(self, employee: employee):
+        Employee_manager.employees.append(employee)
 
-    def pension_contribution(self, pension_contribution_percentage):
-        return float(self.salary) * pension_contribution_percentage
+    def remove_employee(self, employee: employee):
+        Employee_manager.employees.remove(employee)
 
-    def add_to_line_manager(self, employee_object):
-        self.line_manager_group.append(employee_object)
+    def pay_employee(self):
+        for employee in Employee_manager.employees:
+            employee.pay()
 
-    def display_line_manager_group(self):
-        list = ''
-        for employee_manager in  self.line_manager_group:
-            list += '{firstname} {lastname}, ID: {employee_id}, Salary: £{salary}\n'.format(firstname=employee_manager.firstname,
-                              lastname=employee_manager.lastname,
-                              employee_id=employee_manager.employee_id,
-                              salary=employee_manager.salary)
-        return list
+    def display_subordinates(self):
+        subordinates = 'The employees who report to {} {} are: \n'.format(self.firstname, self.lastname)
+        for subordinate in self.subordinates:
+            subordinates += '{}\n'.format(subordinate.__str__())
+        return subordinates
+
+
+
+
+
+
+
+
+
 
 
