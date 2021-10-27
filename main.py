@@ -1,11 +1,9 @@
-import customer_manager
 import employee_manager
 import employee
-import senior_manager
-from enum import Enum, auto
+from enum import IntEnum, auto
 import customer_manager
 
-class Account_type(Enum):
+class Account_type(IntEnum):
     SAVINGS = auto()
     CURRENT = auto()
 
@@ -14,6 +12,16 @@ def main():
     customer2 = customer_manager.Customer("Henry", "Rollins", 25000, Account_type.SAVINGS)
     customer3 = customer_manager.Customer("James", "Bond", 10000, Account_type.CURRENT)
 
+    customer1.set_new_overdraft_limit(1000)
+    print(customer1)
+    customer1.apply_interest()
+    print(customer1)
+
+    customer2.withdraw(1000)
+    customer2.withdraw(1000)
+    customer2.withdraw(1000)
+    print(customer2)
+
     customer_list = []
     customer_list.append(customer1)
     customer_list.append(customer2)
@@ -21,10 +29,6 @@ def main():
 
     customer_current = [x for x in customer_list if x.get_account_type() == Account_type.CURRENT]
     customer_toString = [customer.__str__() for customer in customer_list]
-    print(customer_toString)
-
-
-    print(customer1.__str__())
 
     employee1 = employee.Employee('Steven', 'Morrissey', 27500)
     employee2 = employee.Employee('Ziggy', 'Stardust', 26000)
@@ -47,8 +51,6 @@ def main():
     senior_manager1 = employee_manager.Employee_manager('David', 'Bowie', 92000)
     senior_manager1.add_employee(employeeManager1)
     senior_manager1.add_employee(employeeManager2)
-
-    print(senior_manager1)
 
     senior_manager1.pay_employee()
 

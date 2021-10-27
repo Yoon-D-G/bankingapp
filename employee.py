@@ -13,5 +13,5 @@ class Employee(person.Person):
         return float(self.salary) * pension_contribution_percentage
 
     def __str__(self):
-        return super().__str__() + 'Salary: {salary}'.format(salary=self.salary)
+        return super().__str__() + ', Salary=£{salary:,.2f}'.format(salary=self.salary)
 
