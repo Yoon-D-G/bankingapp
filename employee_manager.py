@@ -1,32 +1,26 @@
 import employee
 import senior_manager
-import additional_functions
+import person
 
-class Employee_manager(additional_functions.AdditionalFunctions):
-    employees = []
+class Employee_manager(employee.Employee):
 
     def __init__(self, firstname, lastname, salary):
-        self.firstname = firstname
-        self.lastname = lastname
-        self.salary = float(salary)
+        super().__init__(lastname=lastname, salary=salary, firstname=firstname)
         self.subordinates = []
         senior_manager.SeniorManager.managers.append(self)
 
     def add_employee(self, employee: employee):
-        Employee_manager.employees.append(employee)
+        self.subordinates.append(employee)
 
     def remove_employee(self, employee: employee):
-        Employee_manager.employees.remove(employee)
+        self.subordinates.remove(employee)
 
     def pay_employee(self):
-        for employee in Employee_manager.employees:
+        for employee in self.subordinates:
             employee.pay()
 
-    def display_subordinates(self):
-        subordinates = 'The employees who report to {} {} are: \n'.format(self.firstname, self.lastname)
-        for subordinate in self.subordinates:
-            subordinates += '{}\n'.format(subordinate.__str__())
-        return subordinates
+    def __str__(self):
+        return super().__str__() + 'Num subordinates = {num}'.format(num=len(self.subordinates))
 
 
 

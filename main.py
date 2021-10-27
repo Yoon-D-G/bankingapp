@@ -22,28 +22,14 @@ def main():
     employeeManager2.add_employee(employee5)
     employeeManager2.add_employee(employee6)
 
-    senior_manager1 = senior_manager.SeniorManager('Christopher', 'Hitchens', 120000)
 
-    senior_manager1.allocate_employee_to_manager(employeeManager1, employee1)
-    senior_manager1.allocate_employee_to_manager(employeeManager1, employee2)
-    senior_manager1.allocate_employee_to_manager(employeeManager1, employee3)
-    senior_manager1.allocate_employee_to_manager(employeeManager2, employee4)
-    senior_manager1.allocate_employee_to_manager(employeeManager2, employee5)
-    senior_manager1.allocate_employee_to_manager(employeeManager2, employee6)
-
-    print(employeeManager2.display_subordinates())
-
-    employeeManager1.remove_employee(employee1)
-
-    print(employeeManager1.display_subordinates())
-
-    senior_manager1.promote(employee2)
-
-    print(employeeManager1.display_subordinates())
+    senior_manager1 = employee_manager.Employee_manager('David', 'Bowie', 92000)
+    senior_manager1.add_employee(employeeManager1)
+    senior_manager1.add_employee(employeeManager2)
 
     print(senior_manager1)
 
-    print(senior_manager1.display_employee_managers())
+    senior_manager1.pay_employee()
 
 if __name__ == '__main__':
     main()

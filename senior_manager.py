@@ -1,7 +1,7 @@
 import employee_manager
-import additional_functions
+import person
 
-class SeniorManager(additional_functions.AdditionalFunctions):
+class SeniorManager:
     managers = []
 
     def __init__(self, firstname, lastname, salary):
