@@ -2,9 +2,29 @@ import customer_manager
 import employee_manager
 import employee
 import senior_manager
+from enum import Enum, auto
+import customer_manager
 
+class Account_type(Enum):
+    SAVINGS = auto()
+    CURRENT = auto()
 
 def main():
+    customer1 = customer_manager.Customer("Eric", "Clapton", 100000, Account_type.CURRENT)
+    customer2 = customer_manager.Customer("Henry", "Rollins", 25000, Account_type.SAVINGS)
+    customer3 = customer_manager.Customer("James", "Bond", 10000, Account_type.CURRENT)
+
+    customer_list = []
+    customer_list.append(customer1)
+    customer_list.append(customer2)
+    customer_list.append(customer3)
+
+    customer_current = [x for x in customer_list if x.get_account_type() == Account_type.CURRENT]
+    print(customer_current.__str__())
+
+
+    print(customer1.__str__())
+
     employee1 = employee.Employee('Steven', 'Morrissey', 27500)
     employee2 = employee.Employee('Ziggy', 'Stardust', 26000)
     employee3 = employee.Employee('Nick', 'Drake', 28000)
