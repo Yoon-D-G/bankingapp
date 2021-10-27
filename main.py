@@ -20,7 +20,8 @@ def main():
     customer_list.append(customer3)
 
     customer_current = [x for x in customer_list if x.get_account_type() == Account_type.CURRENT]
-    print(customer_current.__str__())
+    customer_toString = [customer.__str__() for customer in customer_list]
+    print(customer_toString)
 
 
     print(customer1.__str__())
