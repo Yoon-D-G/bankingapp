@@ -1,28 +1,19 @@
 import person
-from main import Account_type
+import account
+
 class Customer(person.Person):
 
-    def __init__(self, firstname, lastname, balance, account_type: Account_type):
+    def __init__(self, firstname, lastname, account: account.Account):
         super().__init__(firstname, lastname)
-        self.balance = balance
-        self.account_type = account_type
+        self.account = account
 
-    def get_account_type(self):
-        return self.account_type
-
-    def withdraw(self, amount):
-        if self.balance - amount >= 0:
-            self.update_balance(self.balance - amount)
-
-    def deposit(self, amount):
-        self.update_balance(self.balance + amount)
+    def get_account(self):
+        return self.account
 
     def __str__(self):
-        return super().__str__() + \
-               '{balance} {account_type}'.format(balance=self.balance, account_type=self.account_type)
+        return person.Person.__str__(self) + \
+               ', Balance={balance}, ' \
+               'Account Type={account_type}'.format(balance=self.account.get_balance(),
+                                                    account_type=self.account.account_type())
 
-    def update_balance(self, new_balance):
-        self.balance = new_balance
 
-    def apply_interest(self, interest_amount):
-        self.update_balance(self.balance * (1 + interest_amount))

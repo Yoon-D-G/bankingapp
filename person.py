@@ -8,7 +8,10 @@ class Person:
         self.person_id = Person.id
 
     def __str__(self):
-        return 'Name: {firstname} {lastname}, id: {id}\n'.format(
+        return 'Name={firstname} {lastname}, id={id}'.format(
             firstname=self.firstname,
             lastname=self.lastname,
             id=self.person_id)
+
+    def get_id(self):
+        return self.person_id
