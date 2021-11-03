@@ -12,6 +12,9 @@ class Person:
             firstname=self.firstname,
             lastname=self.lastname,
             id=self.person_id)
+<<<<<<< HEAD
 
     def get_id(self):
         return self.person_id
+=======
+>>>>>>> 76b3ca6fd2ca7ddf2b740652394bfcc5e177adf2
